@@ -1,0 +1,16 @@
+.permission {
+  &-header,
+  &-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &-cell {
+    flex: 1;
+  }
+
+  &-save-btn {
+    
+  }
+}
