@@ -7,24 +7,27 @@
       <div class="permission-cell permission-view">
         <label>
           <input type="checkbox" ng-model="$ctrl.permissionsAll.view" ng-change="$ctrl.permissionAllChanged('view')"
-            name="" id="">
-          Check all
+            name="" id="" class="input-checkbox" hidden>
+          <span class="checkbox"> <span class="checkbox-span"> <span></span> </span> </span>
+          <span>Check all</span>
         </label>
       </div>
       <div class="permission-cell permission-edit">
         <label>
           <input type="checkbox" ng-model="$ctrl.permissionsAll.edit" ng-disabled="!$ctrl.permissionsAll.view"
             ng-change="$ctrl.permissionAllChanged('edit')"
-            name="" id="">
-          Check all
+            name="" id="" class="input-checkbox" hidden>
+          <span class="checkbox"> <span class="checkbox-span"> <span></span> </span> </span>
+          <span>Check all</span>
         </label>
       </div>
       <div class="permission-cell permission-remove">
         <label>
           <input type="checkbox" ng-model="$ctrl.permissionsAll.remove" ng-disabled="!$ctrl.permissionsAll.edit"
             ng-change="$ctrl.permissionAllChanged('remove')"
-            name="" id="">
-          Check all
+            name="" id="" class="input-checkbox" hidden>
+          <span class="checkbox"> <span class="checkbox-span"> <span></span> </span> </span>
+          <span>Check all</span>
         </label>
       </div>
     </div>
@@ -34,33 +37,31 @@
       <div class="permission-cell permission-view">
         <label>
           <input type="checkbox" ng-model="permission.permissions.view"
-            ng-change="$ctrl.permissionChanged(permission.permissions, 'view')" name="" id="">
-          View
+            ng-change="$ctrl.permissionChanged(permission.permissions, 'view')" name="" id="" class="input-checkbox" hidden>
+          <span class="checkbox"> <span class="checkbox-span"> <span></span> </span> </span>
+          <span>View </span>
         </label>
       </div>
       <div class="permission-cell permission-edit">
         <label>
           <input type="checkbox" ng-model="permission.permissions.edit" ng-disabled="!permission.permissions.view"
-            ng-change="$ctrl.permissionChanged(permission.permissions, 'edit')" name="" id="">
-          Edit
+            ng-change="$ctrl.permissionChanged(permission.permissions, 'edit')" name="" id="" class="input-checkbox" hidden>
+          <span class="checkbox"> <span class="checkbox-span"> <span></span> </span> </span>
+          <span>Edit </span>
         </label>
       </div>
       <div class="permission-cell permission-remove">
         <label>
           <input type="checkbox" ng-model="permission.permissions.remove" ng-disabled="!permission.permissions.edit"
-            ng-change="$ctrl.permissionChanged(permission.permissions, 'remove')" name="" id="">
-          Remove
+            ng-change="$ctrl.permissionChanged(permission.permissions, 'remove')" name="" id="" class="input-checkbox" hidden>
+          <span class="checkbox"> <span class="checkbox-span"> <span></span> </span> </span>
+          <span>Remove </span>
         </label>
       </div>
-
-      <!-- <div class="debug">
-        <h4>View:{{ permission.permissions.view }}</h4>
-        <h4>Edit:{{ permission.permissions.edit }}</h4>
-        <h4>Remove:{{ permission.permissions.remove }}</h4>
-      </div> -->
     </div>
 
     <div class="permission-save">
+      <div ng-show="$ctrl.showMessage" class="permission-save-message">Your changes have been saved</div>
       <button ng-click="$ctrl.permissionsSave()" class="permission-save-btn">Save</button>
     </div>
   </div>

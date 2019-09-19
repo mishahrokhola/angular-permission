@@ -12,7 +12,7 @@ interface IPermissions {
 }
 
 class AppController implements ng.IController {
-  static $inject = ['$state'];
+  static $inject = ['$state', '$timeout'];
 
   title: string = 'Permission';
   permissions: Array<ISectionPermission> = [
@@ -55,6 +55,9 @@ class AppController implements ng.IController {
     edit: false,
     remove: false,
   };
+
+  showMessageTimeout = this.$timeout(function () { }, 0);
+  showMessage: boolean = false;
 
   //check change event handler
   permissionChanged: Function = (permissions: IPermissions, type: String) => {
@@ -114,9 +117,18 @@ class AppController implements ng.IController {
 
   permissionsSave: Function = () => {
     localStorage.setItem('permissions', JSON.stringify(this.permissions));
+
+    this.showMessage = true;
+    this.animateShowMessage();
   }
 
-  constructor(public $state: ng.ui.IStateService) {
+  animateShowMessage: Function = () => {
+    // Stop the pending timeout
+    this.$timeout.cancel(this.showMessageTimeout);
+    this.showMessageTimeout = this.$timeout(() => { this.showMessage = false; }, 2000);
+  }
+
+  constructor(public $state: ng.ui.IStateService, private $timeout: ng.ITimeoutService) {
     $state.go('app.home');
 
     const localPermissions = localStorage.getItem('permissions');
